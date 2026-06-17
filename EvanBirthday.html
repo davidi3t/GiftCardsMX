@@ -187,17 +187,17 @@
       box-shadow: none;
     }
 
-    .character-card {
+    .photo-card {
       position: relative;
       border-radius: 36px;
-      padding: 26px;
-      background: rgba(255,255,255,.76);
+      padding: 18px;
+      background: rgba(255,255,255,.78);
       border: 2px solid rgba(15,126,232,.16);
       box-shadow: var(--shadow);
       overflow: hidden;
     }
 
-    .character-card::before {
+    .photo-card::before {
       content: "";
       position: absolute;
       inset: -35% -20% auto auto;
@@ -207,24 +207,25 @@
       border-radius: 999px;
     }
 
-    .dog {
+    .invite-photo-wrap {
       position: relative;
-      width: min(360px, 100%);
-      aspect-ratio: 1 / 1;
-      margin: 0 auto;
-      display: grid;
-      place-items: center;
+      border-radius: 30px;
+      overflow: hidden;
+      background: #e8f7ff;
+      border: 8px solid rgba(255,255,255,.95);
+      box-shadow: 0 18px 45px rgba(6,25,54,.18);
     }
 
-    .dog svg {
+    .invite-photo {
+      display: block;
       width: 100%;
       height: auto;
-      filter: drop-shadow(0 24px 22px rgba(6,25,54,.18));
+      object-fit: cover;
     }
 
     .card-note {
       position: relative;
-      margin-top: 10px;
+      margin-top: 14px;
       padding: 16px;
       border-radius: 22px;
       background: #e8f7ff;
@@ -460,11 +461,16 @@
         grid-template-columns: 1fr;
       }
 
-      .character-card,
+      .photo-card,
       .party-card,
       .form-card {
         border-radius: 26px;
         padding: 18px;
+      }
+
+      .invite-photo-wrap {
+        border-radius: 22px;
+        border-width: 6px;
       }
     }
   </style>
@@ -491,26 +497,13 @@
         </div>
       </div>
 
-      <aside class="character-card" aria-label="Diseño infantil de perrito azul">
-        <div class="dog">
-          <svg viewBox="0 0 420 420" role="img" aria-label="Perrito azul estilo caricatura">
-            <ellipse cx="210" cy="322" rx="128" ry="38" fill="rgba(6,25,54,.14)"/>
-            <path d="M112 119L78 50c-3-6 3-13 10-10l70 31" fill="#08265a"/>
-            <path d="M308 119l34-69c3-6-3-13-10-10l-70 31" fill="#08265a"/>
-            <path d="M115 110c-30 35-43 82-39 130 8 98 70 145 134 145s126-47 134-145c4-48-9-95-39-130-27-31-63-48-95-48s-68 17-95 48z" fill="#0f7ee8"/>
-            <path d="M128 129c-23 29-34 68-31 108 6 80 55 118 113 118s107-38 113-118c3-40-8-79-31-108-23-29-53-42-82-42s-59 13-82 42z" fill="#8fd8ff"/>
-            <path d="M115 119L88 63l61 29" fill="#8fd8ff"/>
-            <path d="M305 119l27-56-61 29" fill="#8fd8ff"/>
-            <circle cx="158" cy="213" r="15" fill="#07111f"/>
-            <circle cx="262" cy="213" r="15" fill="#07111f"/>
-            <circle cx="163" cy="208" r="5" fill="#fff"/>
-            <circle cx="267" cy="208" r="5" fill="#fff"/>
-            <path d="M178 258c20 19 45 19 65 0" stroke="#07111f" stroke-width="9" stroke-linecap="round" fill="none"/>
-            <path d="M199 234c4-9 18-9 22 0 3 7-2 16-11 16s-14-9-11-16z" fill="#07111f"/>
-            <circle cx="106" cy="232" r="34" fill="#0a3a85" opacity=".55"/>
-            <circle cx="314" cy="232" r="34" fill="#0a3a85" opacity=".55"/>
-            <path d="M96 294c28 38 67 58 114 58s86-20 114-58" stroke="#08265a" stroke-width="12" stroke-linecap="round" opacity=".35"/>
-          </svg>
+      <aside class="photo-card" aria-label="Foto de Evan">
+        <div class="invite-photo-wrap">
+          <img
+            class="invite-photo"
+            src="Images/evan-invitation.jpg"
+            alt="Evan sonriendo con un osito"
+          />
         </div>
 
         <div class="card-note">“¡Ven a celebrar conmigo!”</div>
@@ -647,7 +640,7 @@
   <footer>Invitación de cumpleaños de Evan · 3 años</footer>
 
   <script>
-    const RSVP_WHATSAPP_NUMBER = "19164725437";
+    const RSVP_WHATSAPP_NUMBER = "19167419357";
 
     const form = document.querySelector("#rsvpForm");
     const statusInput = document.querySelector("#rsvpStatus");
