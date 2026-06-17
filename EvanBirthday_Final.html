@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>¡Evan cumple 3! | Invitación</title>
+  <meta name="description" content="Invitación al cumpleaños número 3 de Evan. Confirma tu asistencia por WhatsApp con tu nombre, número de personas y respuesta." />
+
+  <meta property="og:title" content="¡Evan cumple 3!" />
+  <meta property="og:description" content="Te invitamos a celebrar el cumpleaños número 3 de Evan. Confirma tu asistencia." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root {
+      --navy: #061936;
+      --navy-2: #08265a;
+      --blue-dark: #0a3a85;
+      --blue: #0f7ee8;
+      --blue-2: #16a4ff;
+      --blue-light: #b8e7ff;
+      --sky: #e8f7ff;
+      --white: #ffffff;
+      --text: #08244b;
+      --muted: #496989;
+      --black: #07111f;
+      --shadow: 0 24px 80px rgba(6, 25, 54, .24);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(22,164,255,.45), transparent 18rem),
+        radial-gradient(circle at 88% 0%, rgba(184,231,255,.9), transparent 24rem),
+        linear-gradient(180deg, #dff4ff 0%, #f4fbff 48%, #caecff 100%);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 28px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 32px;
+      align-items: center;
+      padding: 46px 0 28px;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255,255,255,.7);
+      border: 2px solid rgba(15,126,232,.12);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .bubble.one {
+      width: 72px;
+      height: 72px;
+      top: 38px;
+      right: 35%;
+    }
+
+    .bubble.two {
+      width: 42px;
+      height: 42px;
+      bottom: 8px;
+      left: -10px;
+      animation-delay: 1.1s;
+    }
+
+    .bubble.three {
+      width: 54px;
+      height: 54px;
+      bottom: 120px;
+      right: -15px;
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-14px);
+      }
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      border: 2px solid rgba(15,126,232,.18);
+      color: var(--blue-dark);
+      font-weight: 900;
+      box-shadow: 0 10px 30px rgba(15,126,232,.14);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3.1rem, 10vw, 7.5rem);
+      line-height: .88;
+      letter-spacing: -.08em;
+      color: var(--navy);
+    }
+
+    .name {
+      display: inline-block;
+      color: var(--blue);
+      text-shadow: 0 7px 0 rgba(6,25,54,.08);
+    }
+
+    .subtitle {
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.65;
+      max-width: 620px;
+      font-weight: 650;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-2));
+      color: #fff;
+      font-weight: 950;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(15,126,232,.25);
+      transition: .2s ease;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn.dark {
+      background: var(--black);
+      color: #fff;
+      box-shadow: 0 14px 30px rgba(7,17,31,.22);
+    }
+
+    .btn.ghost {
+      background: rgba(255,255,255,.78);
+      color: var(--blue-dark);
+      border: 2px solid rgba(15,126,232,.18);
+      box-shadow: none;
+    }
+
+    .photo-card {
+      position: relative;
+      border-radius: 36px;
+      padding: 18px;
+      background: rgba(255,255,255,.78);
+      border: 2px solid rgba(15,126,232,.16);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .photo-card::before {
+      content: "";
+      position: absolute;
+      inset: -35% -20% auto auto;
+      width: 260px;
+      height: 260px;
+      background: rgba(22,164,255,.18);
+      border-radius: 999px;
+    }
+
+    .invite-photo-wrap {
+      position: relative;
+      border-radius: 30px;
+      overflow: hidden;
+      background: #e8f7ff;
+      border: 8px solid rgba(255,255,255,.95);
+      box-shadow: 0 18px 45px rgba(6,25,54,.18);
+    }
+
+    .invite-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .card-note {
+      position: relative;
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: 22px;
+      background: #e8f7ff;
+      border: 2px dashed rgba(15,126,232,.35);
+      text-align: center;
+      font-weight: 900;
+      color: var(--blue-dark);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0 34px;
+    }
+
+    .info-card {
+      padding: 20px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.78);
+      border: 2px solid rgba(15,126,232,.14);
+      box-shadow: 0 16px 40px rgba(6,25,54,.10);
+    }
+
+    .info-card .icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: #dff4ff;
+      color: var(--blue-dark);
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+    }
+
+    .info-card h3 {
+      margin: 0 0 6px;
+      color: var(--navy);
+    }
+
+    .info-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+      font-weight: 650;
+    }
+
+    .map-link {
+      display: inline-block;
+      color: var(--blue);
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .map-link:hover {
+      text-decoration: underline;
+    }
+
+    .rsvp-section {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 20px;
+      align-items: stretch;
+      padding-bottom: 54px;
+    }
+
+    .party-card,
+    .form-card {
+      border-radius: 34px;
+      background: rgba(255,255,255,.8);
+      border: 2px solid rgba(15,126,232,.16);
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .party-card h2,
+    .form-card h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      color: var(--navy);
+      letter-spacing: -.055em;
+    }
+
+    .party-card p,
+    .form-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-weight: 650;
+    }
+
+    .paw-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .paw-item {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 14px;
+      border-radius: 18px;
+      background: #e8f7ff;
+      color: var(--blue-dark);
+      font-weight: 850;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    label {
+      display: grid;
+      gap: 7px;
+      color: var(--navy);
+      font-weight: 900;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 2px solid rgba(15,126,232,.18);
+      border-radius: 16px;
+      padding: 14px 15px;
+      background: #fff;
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(15,126,232,.12);
+    }
+
+    .choice-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .choice {
+      min-height: 54px;
+      border: 2px solid rgba(15,126,232,.16);
+      border-radius: 16px;
+      background: #fff;
+      color: var(--blue-dark);
+      font-weight: 950;
+      cursor: pointer;
+      transition: .2s ease;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .choice.active.yes {
+      border-color: var(--blue);
+      background: rgba(15,126,232,.14);
+    }
+
+    .choice.active.no {
+      border-color: var(--black);
+      background: rgba(7,17,31,.08);
+      color: var(--black);
+    }
+
+    .submit-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .small {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.45;
+      font-weight: 650;
+    }
+
+    .toast {
+      display: none;
+      margin-top: 12px;
+      padding: 13px 14px;
+      border-radius: 16px;
+      background: rgba(15,126,232,.12);
+      border: 2px solid rgba(15,126,232,.25);
+      color: var(--navy);
+      font-weight: 900;
+    }
+
+    .toast.show {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px 0 30px;
+      color: var(--muted);
+      font-weight: 750;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .rsvp-section {
+        grid-template-columns: 1fr;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        width: min(100% - 22px, 1120px);
+      }
+
+      .hero {
+        padding-top: 26px;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .choice-row,
+      .submit-row {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-card,
+      .party-card,
+      .form-card {
+        border-radius: 26px;
+        padding: 18px;
+      }
+
+      .invite-photo-wrap {
+        border-radius: 22px;
+        border-width: 6px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="hero">
+      <span class="bubble one"></span>
+      <span class="bubble two"></span>
+      <span class="bubble three"></span>
+
+      <div>
+        <div class="tag">🎈 Invitación especial · 3 años</div>
+        <h1>¡<span class="name">Evan</span><br />cumple 3!</h1>
+        <p class="subtitle">
+          Acompáñanos a celebrar una tarde llena de juegos, familia y diversión.
+          Confirma tu asistencia para preparar todo con mucho cariño.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="#rsvp">Confirmar asistencia</a>
+          <a class="btn ghost" href="#detalles">Ver detalles</a>
+        </div>
+      </div>
+
+      <aside class="photo-card" aria-label="Foto de Evan">
+        <div class="invite-photo-wrap">
+          <img
+            class="invite-photo"
+            src="Images/evan-invitation.jpg"
+            alt="Evan sonriendo con un osito"
+          />
+        </div>
+
+        <div class="card-note">“¡Ven a celebrar conmigo!”</div>
+      </aside>
+    </section>
+
+    <section class="info-grid" id="detalles">
+      <article class="info-card">
+        <div class="icon">📅</div>
+        <h3>Fecha</h3>
+        <p>
+          Viernes, 27 de junio<br />
+          <strong>Hora:</strong> 3:00 PM
+        </p>
+      </article>
+
+      <article class="info-card">
+        <div class="icon">📍</div>
+        <h3>Lugar</h3>
+        <p>
+          <a
+            class="map-link"
+            href="https://maps.app.goo.gl/tUG3aLntQHmgd71dA"
+            target="_blank"
+            rel="noopener"
+          >
+            Circuito Piamonte<br />
+            20907 Aguascalientes, Ags., México
+          </a>
+        </p>
+        <div style="margin-top: 12px;">
+          <a
+            class="btn"
+            href="https://maps.app.goo.gl/tUG3aLntQHmgd71dA"
+            target="_blank"
+            rel="noopener"
+          >
+            Abrir en Google Maps
+          </a>
+        </div>
+      </article>
+
+      <article class="info-card">
+        <div class="icon">🎂</div>
+        <h3>Celebración</h3>
+        <p>
+          Juegos y diversión para celebrar los 3 años de Evan.
+        </p>
+      </article>
+    </section>
+
+    <section class="rsvp-section" id="rsvp">
+      <aside class="party-card">
+        <h2>Detalles para invitados</h2>
+        <p>
+          El evento se llevará a cabo en la casa club del fraccionamiento.
+        </p>
+
+        <div class="paw-list">
+          <div class="paw-item">🐾 Favor de confirmar asistencia</div>
+          <div class="paw-item">💙 Gracias por celebrar con Evan</div>
+        </div>
+      </aside>
+
+      <section class="form-card">
+        <h2>Confirma asistencia</h2>
+        <p>
+          Escribe tu nombre, cuántas personas asistirán y confirma si podrán acompañarnos.
+        </p>
+
+        <form id="rsvpForm">
+          <input type="hidden" id="rsvpStatus" value="Sí asistiré" />
+
+          <label>
+            Nombre
+            <input
+              id="guestName"
+              name="guestName"
+              type="text"
+              placeholder="Ej. Familia García"
+              required
+            />
+          </label>
+
+          <label>
+            Número de personas
+            <input
+              id="guestCount"
+              name="guestCount"
+              type="number"
+              min="0"
+              max="20"
+              placeholder="Ej. 3"
+              required
+            />
+          </label>
+
+          <label>
+            Mensaje opcional
+            <textarea
+              id="guestMessage"
+              name="guestMessage"
+              rows="3"
+              placeholder="Ej. ¡Gracias por invitarnos!"
+            ></textarea>
+          </label>
+
+          <div class="choice-row" role="group" aria-label="Confirmación de asistencia">
+            <button type="button" class="choice yes active" data-status="Sí asistiré">
+              ✅ Sí asistiré
+            </button>
+            <button type="button" class="choice no" data-status="No podré asistir">
+              ✖ No podré asistir
+            </button>
+          </div>
+
+          <div class="submit-row">
+            <button class="btn" type="submit">Enviar por WhatsApp</button>
+            <button class="btn dark" type="button" id="copyMessage">Copiar mensaje</button>
+          </div>
+
+          <div class="small">
+            Al enviar, se abrirá WhatsApp con el mensaje preparado para confirmar asistencia.
+          </div>
+
+          <div class="toast" id="toast">
+            Mensaje listo. Se abrirá WhatsApp o se copiará el texto.
+          </div>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <footer>Invitación de cumpleaños de Evan · 3 años</footer>
+
+  <script>
+    const RSVP_WHATSAPP_NUMBER = "19167419357";
+
+    const form = document.querySelector("#rsvpForm");
+    const statusInput = document.querySelector("#rsvpStatus");
+    const choiceButtons = document.querySelectorAll(".choice");
+    const toast = document.querySelector("#toast");
+    const copyButton = document.querySelector("#copyMessage");
+
+    function buildMessage() {
+      const name = document.querySelector("#guestName").value.trim();
+      const count = document.querySelector("#guestCount").value.trim();
+      const message = document.querySelector("#guestMessage").value.trim();
+      const status = statusInput.value;
+
+      return [
+        "Hola, quiero confirmar para el cumpleaños de Evan 🎉",
+        "",
+        "Nombre: " + (name || "No especificado"),
+        "Personas: " + (count || "0"),
+        "Respuesta: " + status,
+        message ? "Mensaje: " + message : "",
+        "",
+        "Ubicación: https://maps.app.goo.gl/tUG3aLntQHmgd71dA"
+      ].filter(Boolean).join("\n");
+    }
+
+    function showToast() {
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 3200);
+    }
+
+    choiceButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        choiceButtons.forEach(item => item.classList.remove("active"));
+        button.classList.add("active");
+        statusInput.value = button.dataset.status;
+
+        const countInput = document.querySelector("#guestCount");
+        if (button.dataset.status.includes("No")) {
+          countInput.value = "0";
+        } else if (countInput.value === "0") {
+          countInput.value = "";
+        }
+      });
+    });
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+
+      if (!form.reportValidity()) return;
+
+      const text = encodeURIComponent(buildMessage());
+      const url = `https://wa.me/${RSVP_WHATSAPP_NUMBER}?text=${text}`;
+
+      showToast();
+      window.open(url, "_blank", "noopener");
+    });
+
+    copyButton.addEventListener("click", async () => {
+      const text = buildMessage();
+
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast();
+      } catch (error) {
+        alert(text);
+      }
+    });
+  </script>
+</body>
+</html>
